@@ -15,6 +15,30 @@ class StudentListCreateAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, g
         return self.create(request, *args, **kwargs)
 
 
+class ProfessorListCreateAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+
+    queryset = Professor.objects.all()
+    serializer_class = ProfessorSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class RecommendationRequestListCreateAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+
+    queryset = RecommendationRequest.objects.all()
+    serializer_class = RecommendationRequestSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
 class RecommendationRequestDetailAPIView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
 
     queryset = RecommendationRequest.objects.all()
